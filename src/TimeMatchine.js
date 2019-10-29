@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Card from '../component/Card';
 import TimeConversion from '../component/TimeConverison';
 import ImageSelect from '../component/ImageSelect';
-import {CardSection} from '../component/CardSection';
+import CardSection from '../component/CardSection';
 class TimeMatchine extends Component {
   componentDidMount() {
     this.props.dateFetchData(
@@ -85,8 +85,7 @@ class TimeMatchine extends Component {
   }
 }
 const mapStateToProps = ({dateRe, testRe, myTheme}) => {
-  console.log('my date reducer is aceesed', dateRe);
-  console.log('my time machhine reducer is aceesed', testRe);
+
   const {theme} = myTheme;
   const {lati, longi, loca, date} = dateRe;
   const {isLoading, dateData} = testRe;

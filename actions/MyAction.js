@@ -73,10 +73,13 @@ export const changeLoc = (lat, long, loc) => ({
   type: UPDATE_INFO,
   payload: {lat, long, loc},
 });
-export const settingtheme = (theme,textColor) => ({
-  type: SET_THEME,
+export const settingtheme = (theme,textColor) =>{
+console.log(`theme is:${theme} & textColor is:${textColor}`)
+
+  return {type: SET_THEME,
   payload: {theme,textColor}
-});
+  }
+}
 export const changeDate = (lati, longi, loca, date) => ({
   type: DATE_CHANGE,
   payload: {lati, longi, loca, date},
@@ -108,7 +111,7 @@ export const dateFetchData = (lati, longi, date) => dispatch => {
 };
 
 export const AccentColorChange = Accentcolor => {
-  console.log("Accen+++++++++")
+ 
 return {
   type: ACCENT_COLOR_CHANGE,
   payload: Accentcolor

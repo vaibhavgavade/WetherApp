@@ -2,8 +2,7 @@ import React from 'react';
 import { View,Image,StyleSheet,Text } from 'react-native';
 import ImageData from '../ImagesDada'
 const ImageSelect= (props) => {
-    console.log("Image select props are:",props)
-    console.log("test",props.img)
+
     const {imgStyle}=Container
     switch(props.img){
         case 'partly-cloudy-day':

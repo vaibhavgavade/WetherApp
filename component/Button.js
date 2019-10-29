@@ -18,15 +18,15 @@ const Styles=StyleSheet.create({
         // flex:1,
         marginTop:5,
         alignSelf:'center',
-        backgroundColor:'#f8f8ff',
+        backgroundColor:'#ff0000',
         borderColor:'#1e90ff',
         borderWidth:1,
          marginLeft:10,
         marginRight:10,
         borderRadius:5,
-        height:30,
-        width:100,
-        marginEnd:150,
+        height:41,
+        width:250
+        // marginEnd:150,
      
 
         
@@ -36,8 +36,8 @@ const Styles=StyleSheet.create({
             fontSize:20,
             color:'black',
             fontWeight:'600',
-            color:'#4169e1'
-            // paddingTop:5,
+            color:'#000000',
+             paddingTop:5,
              }
 })
 export  {Button};

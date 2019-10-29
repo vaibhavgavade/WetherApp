@@ -1,4 +1,3 @@
-import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {
   createStackNavigator,
@@ -12,6 +11,8 @@ import Language from './src/Language';
 import RandomDate from './src/RandomDate';
 import TimeMatchine from './src/TimeMatchine';
 import DarkLightTheme from './src/DarkLightTheme';
+import AccentDarkLight from './src/AccentDarkLight'
+import HomeScreen from './src/HomeScreen';
 
 const splashScreen = createStackNavigator({
   start: {
@@ -25,10 +26,19 @@ const splashScreen = createStackNavigator({
 
 const AppStack = createStackNavigator(
   {
+
+    Home:{
+      screen:HomeScreen,
+      navigationOptions:{
+        title:"Detect Location",
+        headerBackTitle:null
+      },
+    },
+
     two: {
       screen: WetherScreen,
       navigationOptions: {
-        title: 'Wether',
+        title: 'Weather',
         headerBackTitle: null,
         headerTitleStyle: {
           fontSize: 25,
@@ -39,18 +49,22 @@ const AppStack = createStackNavigator(
     search: {
       screen: SearchScreen,
       navigationOptions: {
+        headerBackTitle: null,
         title: 'Search Location',
+    
       },
     },
     Alldata: {
       screen: Language,
       navigationOptions: {
+        headerBackTitle: null,
         title: 'Language',
       },
     },
     feature: {
       screen: AllFeatures,
       navigationOptions: {
+        headerBackTitle: null,
         title: 'Settings',
       },
     },
@@ -70,19 +84,30 @@ const AppStack = createStackNavigator(
     DLtheme: {
       screen: DarkLightTheme,
     },
+    Accent:{
+      screen:AccentDarkLight,
+      navigationOptions:{
+          title:'Accent Color'
+      }
+    },
   },
 
+ 
   {
-    defaultNavigationOptions: ({screenProps}) => {
-      console.log('nnnnnnnnnnAVIGATION', screenProps.myProps);
+    defaultNavigationOptions: ({screenProps,myTextC}) => {
+
       const theme = screenProps.myProps;
+      const textC=screenProps.myTextC;
+      console.log("navigtiondefault  mmm",textC)
       return {
         headerStyle: {
           backgroundColor: theme,
         },
-        headerTintColor: '#6495ed',
-        headerTitleStyle: {
+         headerTintColor: textC,
+         
+        headerTitleStyle: {          
           fontWeight: 'bold',
+          fontSize:25,
         },
       };
     },

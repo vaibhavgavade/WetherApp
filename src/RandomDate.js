@@ -145,7 +145,7 @@ class RandomDate extends Component {
   }
 }
 const mapStateToProps = ({dateRe, myTheme}) => {
-  console.log('date states is', dateRe);
+
   const {theme} = myTheme;
   const {lati, longi, loca, date} = dateRe;
   return {lati, longi, loca, date, theme};

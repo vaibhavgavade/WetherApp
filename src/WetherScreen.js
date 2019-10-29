@@ -1,19 +1,44 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
-import {WetherUpperButtons} from '../component/WetherUpperButtons';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+} from 'react-native';
+import WetherUpperButtons from '../component/WetherUpperButtons';
 import {connect} from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {fetchData} from '../actions/MyAction';
 import Card from '../component/Card';
-import {CardSection} from '../component/CardSection';
+import CardSection from '../component/CardSection';
 import ImageSelect from '../component/ImageSelect';
 import {Spinner} from '../component/Spinner';
 import TimeConversion from '../component/TimeConverison';
 class WetherScreen extends Component {
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: 'Settings',
+      headerRight: (
+        <TouchableOpacity
+          style={{paddingRight: 20}}
+          onPress={() => navigation.navigate('search')}>
+          <Icon name="map-marker-alt" size={25} color="#008b8b" />
+        </TouchableOpacity>
+      ),
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 25,
+      },
+     };
+  };
+
   componentDidMount() {
     this.focusListener = this.props.navigation.addListener('willFocus', () => {
       this.fetchcalled();
-      console.log('gggggg');
     });
   }
   componentWillUnmount() {
@@ -22,15 +47,8 @@ class WetherScreen extends Component {
   fetchcalled() {
     this.props.fetchData(this.props.lat, this.props.long);
   }
-
   render() {
-    const {
-      viewContainer,
-      textStyle,
-      imgStyle,
-      iconStyles,
-      titleStyles,
-    } = Container;
+    const {textStyle, iconStyles} = Container;
     const {dataSource} = this.props;
     const {theme} = this.props;
     console.log('hhhhhhhh', theme);
@@ -39,19 +57,26 @@ class WetherScreen extends Component {
       this.props.dataSource.latitude,
     );
     const {navigate} = this.props.navigation;
-    console.log('djfkdj', dataSource);
+    
     if (this.props.isLoading) {
       return <Spinner size="large" />;
     } else {
       return (
         <View style={{backgroundColor: this.props.theme, flex: 1}}>
+          <StatusBar backgroundColor="blue" barStyle="light-content" />
           <WetherUpperButtons
-            searchPress={() => navigate('search')}
+            searchPress={() => this.fetchcalled()}
             settingPress={() => navigate('feature')}
           />
-          <Icon style={iconStyles} name="md-rainy" size={150} color="#dc143c" />
-          <Text style={titleStyles}>{this.props.loc}</Text>
-          <Text style={titleStyles}>{this.props.date}</Text>
+          <Icon
+            style={iconStyles}
+            name="cloud-sun-rain"
+            size={150}
+            color={this.props.AccentC}
+          />
+          {/* <Text style={titleStyles}>{this.props.loc}</Text> */}
+
+          {/* <Text style={titleStyles}>{dataSource.daily.data[0].summary}</Text> */}
           {/* <Image source={ImageData.snowCloudy}/> */}
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <Card
@@ -105,20 +130,19 @@ class WetherScreen extends Component {
     }
   }
 }
-const mapStateToProps = ({loaderRe, update, myTheme}) => {
+const mapStateToProps = ({loaderRe, update, myTheme, accent}) => {
+  console.log("Testing",myTheme)
   const {theme} = myTheme;
   const {dataSource, isLoading} = loaderRe;
   const {lat, long, loc} = update;
-  return {dataSource, isLoading, lat, long, loc, theme};
+  const {AccentC} = accent;
+  return {dataSource, isLoading, lat, long, loc, theme, AccentC};
 };
 export default connect(
   mapStateToProps,
   {fetchData},
 )(WetherScreen);
 export const Container = StyleSheet.create({
-  // viewContainer:{
-  //   marginTop:10,
-  // //  backgroundColor:props.theme
   textStyle: {
     fontSize: 15,
     paddingTop: 10,

@@ -5,7 +5,7 @@ const TimeConverison = props => {
   const {textStyles} = Container;
   console.log(props);
   const dates = new Date(props.allDateTime * 1000);
-  console.log('dates', dates);
+
   return (
     <View>
       <Text style={textStyles}>{dates.toDateString('en-IND')}</Text>

@@ -15,13 +15,13 @@ export const LoaderReducer=(state=INITIAL_STATE,action)=>{
     switch(action.type)
     {
         case FETCH_STARTED:{
-            console.log("test",action.payload)
+         
             return{
                 ...state, isLoading:(state.isLoading=true)
                    }
         }
         case FETCHING_SUCCESS:{
-            console.log("test",action.payload)
+         
             return{
                 ...state, dataSource:action.payload, isLoading:false
             }

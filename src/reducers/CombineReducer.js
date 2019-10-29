@@ -6,6 +6,7 @@ import {SearchReducer} from './SearchReducer';
 import {UpdateInfoReducer} from './UpdateInfoReducer';
 import {ThemeReducer} from './ThemeReducer';
 import {DateReducer} from './DateReducer';
+import {AccentColorReducer} from './AccentColorReducer';
 const rootReducer = combineReducers({
   data: reducer,
   loaderRe: LoaderReducer,
@@ -14,5 +15,6 @@ const rootReducer = combineReducers({
   myTheme: ThemeReducer,
   dateRe: DateReducer,
   testRe: testReducer,
+  accent: AccentColorReducer,
 });
 export {rootReducer};

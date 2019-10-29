@@ -9,7 +9,7 @@ export default class StartingScreen extends Component {
         isLoading:"true"
        }
     setTimeout(()=>{
-        this.props.navigation.navigate('two')
+        this.props.navigation.navigate('Home')
         this.setState({isLoading:!this.state.isLoading})
     },500)
      }

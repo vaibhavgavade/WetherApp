@@ -14,7 +14,7 @@ const   INITIAL_STATE={
         }
     }
         case SEARCH_SUCCESS:{
-            console.log("*****************************",action.payload)
+           
             return{
                 ...state, loaderLoading:(state.loaderLoading=false),
                data:action.payload
