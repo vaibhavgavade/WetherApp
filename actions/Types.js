@@ -14,4 +14,5 @@ export const DATE_CHANGE="Date changed";
 export const DATE_FETCH_STARTED="Date fetching started";
 export const DATE_FETCH_SUCCESS="Date fectch Sucess";
 export const DATE_FETCH_FAIL="Date fetch fail";
+export const ACCENT_COLOR_CHANGE="Accent color change";
 

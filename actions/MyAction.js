@@ -12,6 +12,7 @@ import {DATE_CHANGE} from './Types';
 import {DATE_FETCH_STARTED} from './Types';
 import {DATE_FETCH_SUCCESS} from './Types';
 import {DATE_FETCH_FAIL} from './Types';
+import {ACCENT_COLOR_CHANGE} from './Types';
 import axios from 'axios';
 export const CounterActionInc = count => ({
   type: COUNTER_INCREASE,
@@ -72,9 +73,9 @@ export const changeLoc = (lat, long, loc) => ({
   type: UPDATE_INFO,
   payload: {lat, long, loc},
 });
-export const settingtheme = theme => ({
+export const settingtheme = (theme,textColor) => ({
   type: SET_THEME,
-  payload: theme,
+  payload: {theme,textColor}
 });
 export const changeDate = (lati, longi, loca, date) => ({
   type: DATE_CHANGE,
@@ -105,3 +106,12 @@ export const dateFetchData = (lati, longi, date) => dispatch => {
       });
     });
 };
+
+export const AccentColorChange = Accentcolor => {
+  console.log("Accen+++++++++")
+return {
+  type: ACCENT_COLOR_CHANGE,
+  payload: Accentcolor
+}
+}
+  
