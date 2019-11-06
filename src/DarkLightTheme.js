@@ -7,8 +7,8 @@ import {CheBoxUnSelect} from '../component/cheBoxUnSelect';
 import {settingtheme} from '../actions/MyAction';
 const COLOR = '#000000';
 const COLORS = '#fffaf0';
-const textColor="#fffaf0"
-const whiteText="#000000"
+const textColor = '#fffaf0';
+const whiteText = '#000000';
 class DarkLightTheme extends Component {
   static navigationOptions = ({navigation}) => {
     return {
@@ -26,14 +26,14 @@ class DarkLightTheme extends Component {
   themeFunction() {
     console.log('theme function called');
     const color = COLOR;
-    const text=textColor
-    this.props.settingtheme(color,text);
+    const text = textColor;
+    this.props.settingtheme(color, text);
   }
   themeFunctions() {
     console.log('theme function called');
     const color = COLORS;
-    const texts= whiteText
-    this.props.settingtheme(color,texts);
+    const texts = whiteText;
+    this.props.settingtheme(color, texts);
   }
   dataNavigate() {
     this.props.navigation.navigate('DLtheme');

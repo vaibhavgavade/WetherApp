@@ -74,6 +74,7 @@ class WetherScreen extends Component {
             size={150}
             color={this.props.AccentC}
           />
+      
           {/* <Text style={titleStyles}>{this.props.loc}</Text> */}
 
           {/* <Text style={titleStyles}>{dataSource.daily.data[0].summary}</Text> */}

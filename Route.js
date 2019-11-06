@@ -3,16 +3,19 @@ import {
   createStackNavigator,
   createSwitchNavigator,
 } from 'react-navigation-stack';
-import WetherScreen from './src/WetherScreen';
-import SearchScreen from './src/SeacrhBarScreeen';
-import StartingScreen from './src/StartingScreen';
-import AllFeatures from './src/AllFeatures';
-import Language from './src/Language';
-import RandomDate from './src/RandomDate';
-import TimeMatchine from './src/TimeMatchine';
-import DarkLightTheme from './src/DarkLightTheme';
-import AccentDarkLight from './src/AccentDarkLight'
-import HomeScreen from './src/HomeScreen';
+import {
+  WetherScreen,
+  SearchScreen,
+  StartingScreen,
+  AllFeatures,
+  Language,
+  RandomDate,
+  TimeMatchine,
+  DarkLightTheme,
+  AccentDarkLight,
+  HomeScreen,
+  HooksInput
+} from './Constant/index';
 
 const splashScreen = createStackNavigator({
   start: {
@@ -26,12 +29,11 @@ const splashScreen = createStackNavigator({
 
 const AppStack = createStackNavigator(
   {
-
-    Home:{
-      screen:HomeScreen,
-      navigationOptions:{
-        title:"Detect Location",
-        headerBackTitle:null
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        title: 'Detect Location',
+        headerBackTitle: null,
       },
     },
 
@@ -51,7 +53,6 @@ const AppStack = createStackNavigator(
       navigationOptions: {
         headerBackTitle: null,
         title: 'Search Location',
-    
       },
     },
     Alldata: {
@@ -84,30 +85,30 @@ const AppStack = createStackNavigator(
     DLtheme: {
       screen: DarkLightTheme,
     },
-    Accent:{
-      screen:AccentDarkLight,
-      navigationOptions:{
-          title:'Accent Color'
-      }
+    Accent: {
+      screen: AccentDarkLight,
+      navigationOptions: {
+        title: 'Accent Color',
+      },
     },
+    hooks:{
+      screen:HooksInput
+    }
   },
-
- 
   {
-    defaultNavigationOptions: ({screenProps,myTextC}) => {
-
+    defaultNavigationOptions: ({screenProps, myTextC}) => {
       const theme = screenProps.myProps;
-      const textC=screenProps.myTextC;
-      console.log("navigtiondefault  mmm",textC)
+      const textC = screenProps.myTextC;
+      console.log('navigtiondefault  mmm', textC);
       return {
         headerStyle: {
           backgroundColor: theme,
         },
-         headerTintColor: textC,
-         
-        headerTitleStyle: {          
+        headerTintColor: textC,
+
+        headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize:25,
+          fontSize: 25,
         },
       };
     },

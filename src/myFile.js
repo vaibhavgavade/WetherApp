@@ -25,10 +25,8 @@ class MyFile extends Component{
              </Button>
                 )
             }
-    
-       render(){
-          
-        const{Container,textStyles,wetherbtnStyles}=Styles
+    render(){
+          const{Container,textStyles,wetherbtnStyles}=Styles
         const {count}=this.props
         console.log("render props value is",count)
      return(
@@ -52,8 +50,7 @@ class MyFile extends Component{
             
    )}
 }
-
-const mapStateToProps=({data})=>{
+     const mapStateToProps=({data})=>{
    const {count} = data;
     return {count} 
    }

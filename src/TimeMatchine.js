@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 import {dateFetchData} from '../actions/MyAction';
 import {connect} from 'react-redux';
@@ -8,20 +8,16 @@ import Card from '../component/Card';
 import TimeConversion from '../component/TimeConverison';
 import ImageSelect from '../component/ImageSelect';
 import CardSection from '../component/CardSection';
-class TimeMatchine extends Component {
-  componentDidMount() {
-    this.props.dateFetchData(
-      this.props.lati,
-      this.props.longi,
-      this.props.date,
-    );
-  }
-  render() {
-    const {viewStyle, titleStyles} = Container;
-    const {dateData} = this.props;
-    const {isLoading} = this.props;
-    console.log('Test dddddddd', dateData);
-    console.log('time loader i loading ', isLoading);
+const TimeMatchine =({dateFetchData,lati,longi,date,dateData,isLoading,theme})=> {
+useEffect(()=>{
+    dateFetchData(
+      lati,
+       longi,
+       date,
+     );
+  },[])
+const {viewStyle, titleStyles} = Container;
+   
     if (isLoading) {
       return <Spinner size="large" />;
     } else {
@@ -31,7 +27,7 @@ class TimeMatchine extends Component {
             justifyContent: 'center',
             alignItems: 'center',
 
-            backgroundColor: this.props.theme,
+            backgroundColor:theme,
             flex: 1,
           }}>
           <Text style={titleStyles}>Welcome to You </Text>
@@ -83,7 +79,7 @@ class TimeMatchine extends Component {
       );
     }
   }
-}
+
 const mapStateToProps = ({dateRe, testRe, myTheme}) => {
 
   const {theme} = myTheme;

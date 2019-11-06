@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -13,42 +13,40 @@ import {connect} from 'react-redux';
 import {searchResult} from '../actions/MyAction';
 import {changeLoc} from '../actions/MyAction';
 import {Spinner} from '../component/Spinner';
-class SearchBarScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputText: '',
-    };
-  }
-  textChanging = text => {
- 
-    this.setState({
-      inputText: text,
-    });
+const SearchBarScreen = ({
+  navigation,
+  searchResult,
+  loaderLoading,
+  data,
+  changeLoc,
+}) => {
+  const [input, textInputChange] = useState('');
+  const textChanging = text => {
+    textInputChange(text);
   };
-  searchBarAction = () => {
-   
-    if (this.state.inputText.trim() === ' ') {
+  const searchBarAction = () => {
+    console.log('sercBar test');
+    if (input.trim() === ' ') {
       return;
     } else {
-     
-      this.props.searchResult(this.state.inputText);
+      searchResult(input);
     }
   };
-  testing() {
-    if (this.props.loaderLoading) {
+  function testing() {
+    if (loaderLoading) {
       return <Spinner size="large" />;
     } else {
-      console.log('test', this.props.data);
-      console.log('test', this.props.data[0].display_name);
+      console.log('test', data);
+      console.log('test', data[0].display_name);
+
       return (
         <FlatList
-          data={this.props.data}
+          data={data}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                this.props.changeLoc(item.lat, item.lon, item.display_name);
-                this.props.navigation.navigate('two');
+                changeLoc(item.lat, item.lon, item.display_name);
+                navigation.navigate('two');
               }}>
               <Text style={{fontSize: 30}}>{item.display_name}</Text>
               <View
@@ -61,27 +59,28 @@ class SearchBarScreen extends Component {
       );
     }
   }
-  render() {
-    const {viewStyles, inputStyles, searchButton} = Container;
-    
-    return (
-      <View>
-        <View style={viewStyles}>
-          <TextInput
-            autoCorrect={false}
-            placeholder="Enter the search text"
-            onChangeText={this.textChanging}
-            onSubmitEditing={this.searchBarAction}
-          />
-          <TouchableOpacity style={searchButton} onPress={this.searchBarAction}>
-            <Icon name="md-search" size={30} color="#000000" />
-          </TouchableOpacity>
-        </View>
-        {this.testing()}
+  // render() {
+  const {viewStyles, inputStyles, searchButton} = Container;
+
+  return (
+    <View>
+      <View style={viewStyles}>
+        <TextInput
+          autoCorrect={false}
+          placeholder="Enter the search text"
+          onChangeText={textChanging}
+          onSubmitEditing={searchBarAction}
+          value={input}
+        />
+        <TouchableOpacity style={searchButton} onPress={searchBarAction}>
+          <Icon name="md-search" size={30} color="#000000" />
+        </TouchableOpacity>
       </View>
-    );
-  }
-}
+      {testing()}
+    </View>
+  );
+};
+// }
 const mapStateToProps = ({search}) => {
   const {data, loaderLoading} = search;
   return {data, loaderLoading};
