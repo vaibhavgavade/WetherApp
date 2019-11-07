@@ -28,9 +28,8 @@ const AllFeatures = ({navigation, myTheme}) => {
         title="Accent Color"
         onPress={() => navigation.navigate('Accent')}
       />
-      <AllButtons title="Persistent" />
-      <AllButtons title="About" />
-      <Text style={{color: 'white', alignSelf: 'center', marginTop: 20}}>
+
+      <Text style={{color: 'green', alignSelf: 'center', marginTop: 20,fontSize:15}}>
         powered by DarkSky & locationIq
       </Text>
     </View>

@@ -9,47 +9,44 @@ const COLOR = '#000000';
 const COLORS = '#fffaf0';
 const textColor = '#fffaf0';
 const whiteText = '#000000';
-class DarkLightTheme extends Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: 'Settings',
-      headerRight: (
-        <TouchableOpacity
-          style={{paddingRight: 20}}
-          onPress={() => navigation.navigate('two')}>
-          <Icon name="home" size={25} color="#ff1493" />
-        </TouchableOpacity>
-      ),
-    };
-  };
 
-  themeFunction() {
+// DarkLightTheme.navigationOptions = ({navigation}) => {
+//   return {
+//     title: 'Settings',
+//     headerRight: (
+//       <TouchableOpacity
+//         style={{paddingRight: 20}}
+//         onPress={() => navigation.navigate('two')}>
+//         <Icon name="home" size={25} color="#ff6347" />
+//       </TouchableOpacity>
+//     ),
+//   };
+// };
+const DarkLightTheme = ({navigation, settingtheme, theme}) => {
+  function themeFunction() {
     console.log('theme function called');
     const color = COLOR;
     const text = textColor;
-    this.props.settingtheme(color, text);
+    settingtheme(color, text);
   }
-  themeFunctions() {
+  function themeFunctions() {
     console.log('theme function called');
     const color = COLORS;
     const texts = whiteText;
-    this.props.settingtheme(color, texts);
+    settingtheme(color, texts);
   }
-  dataNavigate() {
-    this.props.navigation.navigate('DLtheme');
+  function dataNavigate() {
+    navigation.navigate('DLtheme');
   }
-  render() {
-    return (
-      <View style={{backgroundColor: this.props.theme, flex: 1}}>
-        <CheckBox title="Dark Theme" onPress={() => this.themeFunction()} />
-        <CheBoxUnSelect
-          title="Light Theme"
-          onPress={() => this.themeFunctions()}
-        />
-      </View>
-    );
-  }
-}
+
+  return (
+    <View style={{backgroundColor: theme, flex: 1}}>
+      <CheckBox title="Dark Theme" onPress={() => themeFunction()} />
+      {/* <CheBoxUnSelect title="Light Theme" onPress={() => themeFunctions()} /> */}
+      <CheckBox title="light Theme" onPress={() => themeFunctions()} />
+    </View>
+  );
+};
 
 const mapStateToProps = ({myTheme}) => {
   console.log('darkLightTheme ', myTheme);

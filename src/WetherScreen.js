@@ -25,7 +25,7 @@ class WetherScreen extends Component {
         <TouchableOpacity
           style={{paddingRight: 20}}
           onPress={() => navigation.navigate('search')}>
-          <Icon name="map-marker-alt" size={25} color="#008b8b" />
+          <Icon name="map-marker-alt" size={25} color="#ff6347" />
         </TouchableOpacity>
       ),
       headerTitleStyle: {
@@ -33,7 +33,7 @@ class WetherScreen extends Component {
         color: 'white',
         fontSize: 25,
       },
-     };
+    };
   };
 
   componentDidMount() {
@@ -57,7 +57,7 @@ class WetherScreen extends Component {
       this.props.dataSource.latitude,
     );
     const {navigate} = this.props.navigation;
-    
+
     if (this.props.isLoading) {
       return <Spinner size="large" />;
     } else {
@@ -74,7 +74,7 @@ class WetherScreen extends Component {
             size={150}
             color={this.props.AccentC}
           />
-      
+
           {/* <Text style={titleStyles}>{this.props.loc}</Text> */}
 
           {/* <Text style={titleStyles}>{dataSource.daily.data[0].summary}</Text> */}
@@ -132,7 +132,7 @@ class WetherScreen extends Component {
   }
 }
 const mapStateToProps = ({loaderRe, update, myTheme, accent}) => {
-  console.log("Testing",myTheme)
+  console.log('Testing', myTheme);
   const {theme} = myTheme;
   const {dataSource, isLoading} = loaderRe;
   const {lat, long, loc} = update;

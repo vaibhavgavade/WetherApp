@@ -1,9 +1,12 @@
-import React from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
-
 const CheckBox = ({title, onPress, AccentC}) => {
+  const [radioBtn, BtnChange] = useState({
+    radioBtnsData: ['Item1', 'Item2'],
+    checked: false,
+  });
   const {viewStyles, textStyles, iconStyle} = Container;
   return (
     <View style={[viewStyles, {backgroundColor: AccentC}]}>
@@ -23,7 +26,6 @@ const CheckBox = ({title, onPress, AccentC}) => {
   );
 };
 const mapStateToProps = ({accent}) => {
-
   const {AccentC} = accent;
   return {AccentC};
 };

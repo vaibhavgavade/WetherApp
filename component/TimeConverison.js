@@ -19,6 +19,6 @@ const Container = StyleSheet.create({
   textStyles: {
     fontSize: 15,
     alignSelf: 'center',
-    color: '#dc143c',
+    color: '#000000',
   },
 });
