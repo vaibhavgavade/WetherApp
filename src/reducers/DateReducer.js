@@ -6,7 +6,7 @@ INITIAL_DATE = {
   date: '',
 };
 export const DateReducer = (state = INITIAL_DATE, action) => {
-  // console.log("date reducer action is",action)
+  console.log('date reducer action is', action.payload);
   switch (action.type) {
     case DATE_CHANGE: {
       return {

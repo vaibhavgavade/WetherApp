@@ -17,6 +17,7 @@ import CardSection from '../component/CardSection';
 import ImageSelect from '../component/ImageSelect';
 import {Spinner} from '../component/Spinner';
 import TimeConversion from '../component/TimeConverison';
+import Font from '../asset/Font';
 class WetherScreen extends Component {
   static navigationOptions = ({navigation}) => {
     return {
@@ -51,13 +52,7 @@ class WetherScreen extends Component {
     const {textStyle, iconStyles} = Container;
     const {dataSource} = this.props;
     const {theme} = this.props;
-    console.log('hhhhhhhh', theme);
-    console.log(
-      'lat is iiiiiiiiiiiiiiiiiiiiii',
-      this.props.dataSource.latitude,
-    );
     const {navigate} = this.props.navigation;
-
     if (this.props.isLoading) {
       return <Spinner size="large" />;
     } else {
@@ -75,10 +70,6 @@ class WetherScreen extends Component {
             color={this.props.AccentC}
           />
 
-          {/* <Text style={titleStyles}>{this.props.loc}</Text> */}
-
-          {/* <Text style={titleStyles}>{dataSource.daily.data[0].summary}</Text> */}
-          {/* <Image source={ImageData.snowCloudy}/> */}
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <Card
               header="Humidity"
@@ -132,23 +123,20 @@ class WetherScreen extends Component {
   }
 }
 const mapStateToProps = ({loaderRe, update, myTheme, accent}) => {
-  console.log('Testing', myTheme);
   const {theme} = myTheme;
   const {dataSource, isLoading} = loaderRe;
   const {lat, long, loc} = update;
   const {AccentC} = accent;
   return {dataSource, isLoading, lat, long, loc, theme, AccentC};
 };
-export default connect(
-  mapStateToProps,
-  {fetchData},
-)(WetherScreen);
+export default connect(mapStateToProps, {fetchData})(WetherScreen);
 export const Container = StyleSheet.create({
   textStyle: {
     fontSize: 15,
     paddingTop: 10,
     paddingLeft: 10,
     alignSelf: 'center',
+    fontFamily: Font.boldSans,
   },
   textViewStyle: {
     flexDirection: 'column',

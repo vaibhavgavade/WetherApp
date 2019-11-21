@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
+import Font from '../asset/Font';
 const CheckBox = ({title, onPress, AccentC}) => {
   const [radioBtn, BtnChange] = useState({
     radioBtnsData: ['Item1', 'Item2'],
@@ -34,7 +35,6 @@ const Container = StyleSheet.create({
   viewStyles: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
@@ -45,8 +45,8 @@ const Container = StyleSheet.create({
     justifyContent: 'flex-start',
     margin: 15,
     fontSize: 20,
+    fontFamily: Font.Aldrich,
   },
-
   iconStyle: {
     margin: 15,
   },

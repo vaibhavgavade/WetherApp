@@ -10,22 +10,23 @@ import {
 import DatePicker from 'react-native-datepicker';
 import {connect} from 'react-redux';
 import {changeDate} from '../actions/MyAction';
+import Font from '../asset/Font';
 const RandomDate = ({navigation, theme, lati, longi, loca, changeDate}) => {
-  const [date, Datechange] = useState();
+  const [date, Datechange] = useState(new Date());
   const [epoch, changEpoch] = useState();
 
   useEffect(() => {
-    var date = new Date();
     Datechange(date);
   }, []);
 
-  function onDismiss() {
+  const onDismiss = () => {
+    console.log('Test');
     Alert.alert('Date Picker', 'please select date', [
       {
         text: 'ok',
       },
     ]);
-  }
+  };
 
   const {viewStyle, buttonStyle, buttonTextStyle} = Container;
   const {navigate} = navigation;
@@ -43,11 +44,13 @@ const RandomDate = ({navigation, theme, lati, longi, loca, changeDate}) => {
       />
       <Text
         style={{
-          color: 'white',
+          color: '#ff4500',
           marginTop: 20,
           marginLeft: 10,
           marginRight: 10,
           fontSize: 15,
+          fontFamily: Font.lightSans,
+          fontWeight: 'bold',
         }}>
         The Time Machine is a science fiction novella by H. G. Wells, published
         in 1895 and written as a frame narrative. The work is generally credited
@@ -67,9 +70,9 @@ const RandomDate = ({navigation, theme, lati, longi, loca, changeDate}) => {
         date={date}
         onDateChange={date => {
           var myDate = Math.floor(new Date(date).valueOf() / 1000);
+          // console.log('tewytfcuw', myDate);
           Datechange(date);
           changEpoch(myDate);
-
           changeDate(lati, longi, loca, epoch);
         }}
         placeholder="Select Date"
@@ -146,10 +149,7 @@ const mapStateToProps = ({dateRe, myTheme}) => {
   const {lati, longi, loca, date} = dateRe;
   return {lati, longi, loca, date, theme};
 };
-export default connect(
-  mapStateToProps,
-  {changeDate},
-)(RandomDate);
+export default connect(mapStateToProps, {changeDate})(RandomDate);
 const Container = StyleSheet.create({
   viewStyle: {
     justifyContent: 'center',

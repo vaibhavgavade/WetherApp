@@ -27,7 +27,6 @@ export const fetchData = (lat, long) => dispatch => {
   const key = 'c7f15dc1a1352d23b77a6bfc97bd0bd6';
   const Api = `https://api.darksky.net/forecast/${key}/${lat},${long}?unit=si`;
   const request = axios.get(Api);
-  console.log('fetchdata action called');
   dispatch({
     type: FETCH_STARTED,
   });
@@ -46,7 +45,6 @@ export const fetchData = (lat, long) => dispatch => {
     });
 };
 export const searchResult = text => dispatch => {
-  console.log('sending text data is', text);
   const token = '3cb12595867f70';
   console.log('search result called');
   const searchApi = `https://api.locationiq.com/v1/autocomplete.php?key=${token}&q=${text}&limit=10`;
@@ -73,21 +71,18 @@ export const changeLoc = (lat, long, loc) => ({
   type: UPDATE_INFO,
   payload: {lat, long, loc},
 });
-export const settingtheme = (theme,textColor) =>{
-console.log(`theme is:${theme} & textColor is:${textColor}`)
-
-  return {type: SET_THEME,
-  payload: {theme,textColor}
-  }
-}
-export const changeDate = (lati, longi, loca, date) => ({
-  type: DATE_CHANGE,
-  payload: {lati, longi, loca, date},
-});
+export const settingtheme = (theme, textColor) => {
+  return {type: SET_THEME, payload: {theme, textColor}};
+};
+export const changeDate = (lati, longi, loca, date) => {
+  console.log('action', date);
+  return {
+    type: DATE_CHANGE,
+    payload: {lati, longi, loca, date},
+  };
+};
 
 export const dateFetchData = (lati, longi, date) => dispatch => {
-  console.log('vaibhav', lati, longi, date);
-  console.log('date fetched called');
   const key = 'c7f15dc1a1352d23b77a6bfc97bd0bd6';
   const dateApi = `https://api.darksky.net/forecast/${key}/${lati},${longi},${date}`;
   const request = axios.get(dateApi);
@@ -111,10 +106,8 @@ export const dateFetchData = (lati, longi, date) => dispatch => {
 };
 
 export const AccentColorChange = Accentcolor => {
- 
-return {
-  type: ACCENT_COLOR_CHANGE,
-  payload: Accentcolor
-}
-}
-  
+  return {
+    type: ACCENT_COLOR_CHANGE,
+    payload: Accentcolor,
+  };
+};

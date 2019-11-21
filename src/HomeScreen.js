@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Button} from '../component/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import Font from '../asset/Font';
 const HomeScreen = ({navigation}) => {
   const {viewStyle, textStyle} = Container;
   return (
@@ -17,10 +18,6 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={{position: 'absolute', bottom: 50}}>
         <Button onPress={() => navigation.navigate('two')}>Go to Home</Button>
-        <Text style={textStyle}>OR</Text>
-        <Button onPress={() => navigation.navigate('hooks')}>
-          Detect Location
-        </Button>
         <Text style={textStyle}>OR</Text>
         <Button onPress={() => navigation.navigate('search')}>
           Search Location

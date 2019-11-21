@@ -14,8 +14,9 @@ import {
   DarkLightTheme,
   AccentDarkLight,
   HomeScreen,
-  HooksInput
+  HooksInput,
 } from './Constant/index';
+import Font from './asset/Font';
 
 const splashScreen = createStackNavigator({
   start: {
@@ -43,8 +44,8 @@ const AppStack = createStackNavigator(
         title: 'Weather',
         headerBackTitle: null,
         headerTitleStyle: {
-          fontSize: 25,
-          // color: '#000000',
+          fontSize: 20,
+          fontFamily: Font.Aldrich,
         },
       },
     },
@@ -91,15 +92,14 @@ const AppStack = createStackNavigator(
         title: 'Accent Color',
       },
     },
-    hooks:{
-      screen:HooksInput
-    }
+    hooks: {
+      screen: HooksInput,
+    },
   },
   {
     defaultNavigationOptions: ({screenProps, myTextC}) => {
       const theme = screenProps.myProps;
       const textC = screenProps.myTextC;
-      console.log('navigtiondefault  mmm', textC);
       return {
         headerStyle: {
           backgroundColor: theme,
@@ -107,8 +107,8 @@ const AppStack = createStackNavigator(
         headerTintColor: textC,
 
         headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize: 25,
+          fontSize: 20,
+          fontFamily: Font.Aldrich,
         },
       };
     },

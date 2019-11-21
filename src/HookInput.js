@@ -1,24 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet, TextInput} from 'react-native';
 import RadioButton from 'radio-button-react-native';
-
 const HooksInput = () => {
   const [input, changeInput] = useState('vaibhav');
   const [value, changeValue] = useState(0);
   const {viewStyle, textInputStyle} = Container;
-
-  //   const textChange = input => {
-  //     changeInput(input);
-  //   };
   const handleOnPress = e => {
-    console.log('Test', e);
     changeValue(e);
   };
-
   useEffect(() => {
     console.log('Input is', input);
   }, [input]);
-
   return (
     <View style={viewStyle}>
       <Text>HooksInput</Text>

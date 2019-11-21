@@ -9,7 +9,6 @@ const CheBoxUnSelect = ({title, onPress}) => {
       <TouchableOpacity>
         <Text style={textStyles}>{title}</Text>
       </TouchableOpacity>
-
       <TouchableOpacity onPress={onPress} style={{paddingLeft: 10}}>
         <Icon
           style={iconStyle}

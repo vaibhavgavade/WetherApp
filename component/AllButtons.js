@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
-const AllButtons = ({title, onPress,AccentC}) => {
-  
+import Font from '../asset/Font';
+const AllButtons = ({title, onPress, AccentC}) => {
   const {viewStyles, textStyles, iconStyle} = Container;
   return (
-    <View style={[viewStyles,{backgroundColor:AccentC}]}>
+    <View style={[viewStyles, {backgroundColor: AccentC}]}>
       <TouchableOpacity>
         <Text style={[textStyles]}>{title}</Text>
       </TouchableOpacity>
@@ -21,20 +21,17 @@ const AllButtons = ({title, onPress,AccentC}) => {
     </View>
   );
 };
-
-const mapStateToProps=({accent})=>{
-  
-  const{AccentC}=accent
-  return{AccentC}
-
-}
+const mapStateToProps = ({accent}) => {
+  const {AccentC} = accent;
+  return {AccentC};
+};
 
 export default connect(mapStateToProps)(AllButtons);
 const Container = StyleSheet.create({
   viewStyles: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-   
+
     marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
@@ -45,6 +42,7 @@ const Container = StyleSheet.create({
     justifyContent: 'flex-start',
     margin: 15,
     fontSize: 20,
+    fontFamily:Font.Aldrich
   },
   iconStyle: {
     margin: 15,

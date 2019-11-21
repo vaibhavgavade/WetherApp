@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import AllButtons from '../component/AllButtons';
+import Font from '../asset/Font';
 import {connect} from 'react-redux';
 const AllFeatures = ({navigation, myTheme}) => {
   dataNavigate = () => {
@@ -12,7 +13,6 @@ const AllFeatures = ({navigation, myTheme}) => {
       <AllButtons
         title="Theme"
         onPress={() => {
-          // this.themeFunction();
           this.dataNavigate();
         }}
       />
@@ -29,7 +29,14 @@ const AllFeatures = ({navigation, myTheme}) => {
         onPress={() => navigation.navigate('Accent')}
       />
 
-      <Text style={{color: 'green', alignSelf: 'center', marginTop: 20,fontSize:15}}>
+      <Text
+        style={{
+          color: 'green',
+          alignSelf: 'center',
+          marginTop: 20,
+          fontSize: 20,
+          fontFamily: Font.regularSans,
+        }}>
         powered by DarkSky & locationIq
       </Text>
     </View>

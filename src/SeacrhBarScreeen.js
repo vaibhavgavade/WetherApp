@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import {searchResult} from '../actions/MyAction';
 import {changeLoc} from '../actions/MyAction';
 import {Spinner} from '../component/Spinner';
+import Font from '../asset/Font';
 const SearchBarScreen = ({
   navigation,
   searchResult,
@@ -25,7 +26,6 @@ const SearchBarScreen = ({
     textInputChange(text);
   };
   const searchBarAction = () => {
-    console.log('sercBar test');
     if (input.trim() === ' ') {
       return;
     } else {
@@ -36,9 +36,6 @@ const SearchBarScreen = ({
     if (loaderLoading) {
       return <Spinner size="large" />;
     } else {
-      console.log('test', data);
-      console.log('test', data[0].display_name);
-
       return (
         <FlatList
           data={data}
@@ -48,7 +45,9 @@ const SearchBarScreen = ({
                 changeLoc(item.lat, item.lon, item.display_name);
                 navigation.navigate('two');
               }}>
-              <Text style={{fontSize: 30}}>{item.display_name}</Text>
+              <Text style={{fontSize: 20, fontFamily: Font.regularSans}}>
+                {item.display_name}
+              </Text>
               <View
                 style={{borderBottomWidth: 0.5, borderBottomColor: '#000000'}}
               />
@@ -85,10 +84,9 @@ const mapStateToProps = ({search}) => {
   const {data, loaderLoading} = search;
   return {data, loaderLoading};
 };
-export default connect(
-  mapStateToProps,
-  {searchResult, changeLoc},
-)(SearchBarScreen);
+export default connect(mapStateToProps, {searchResult, changeLoc})(
+  SearchBarScreen,
+);
 const Container = StyleSheet.create({
   viewStyles: {
     flexDirection: 'row',
