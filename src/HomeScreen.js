@@ -36,6 +36,7 @@ const Container = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 30,
     marginTop: 10,
+    fontFamily: Font.boldSans,
   },
 });
 export {HomeScreen};
